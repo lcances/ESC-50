@@ -24,6 +24,18 @@ VERSION = "esc-10"
 FOLDS = (1, 2, 3, 4, 5)
 
 class ESC(Dataset):
+    """
+    ESC datasets
+
+    Args:
+        root (string): Root directory of datasets where directory
+            ``ESC`` exists or will be saved to if download is set to True.
+        version (string, optional): The version of the dataset to use.
+            The available version are esc-10 and esc-50
+        download (bool, optional): If true, download the dataset from the internet
+            and puts it in root directory. If datasets is already downloaded, it is
+            not downloaded again.
+    """
     def __init__(self,
                 root: str,
                 version: str = VERSION,
@@ -38,13 +50,26 @@ class ESC(Dataset):
         self.download = download
 
     def __getitem__(self, index: int) -> Tuple[tensor, int]:
+        """
+        Args:
+            index (int): Index
+
+        Returns:
+            tuple: (raw_audio, label).
+        """
         pass
 
     def __len__(self) -> int:
         pass
 
     def download(self) -> None:
+        """Download the dataset and extract the archive"""
         pass
 
     def check_integrity(self):
+        """Check if the dataset already exist and if yes, if it is not corrupted.
+
+        Returns:
+            bool: False if the dataset doesn't exist or if it is corrupted.
+        """
         pass
