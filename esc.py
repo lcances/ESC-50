@@ -71,7 +71,7 @@ class ESC50(Dataset):
             index (int): Index
 
         Returns:
-            tuple: (raw_audio, label).
+            tuple: (raw_audio, sr, target).
         """
         filename = self.metadata.iloc[index].name
         return self.load_item(filename)
@@ -102,7 +102,7 @@ class ESC50(Dataset):
             download_url(self.url, self.root)
             extract_archive(archive_path, self.target_directory)
 
-    def check_integrity(self, path, checksum=None):
+    def check_integrity(self, path, checksum=None) -> bool:
         """Check if the dataset already exist and if yes, if it is not corrupted.
 
         Returns:
